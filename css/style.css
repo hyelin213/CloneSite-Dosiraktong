@@ -1,0 +1,86 @@
+@charset 'utf-8'; /* 항상 1번 줄에 배치 */
+
+/* font import */
+@import url("./font/font.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Poppins", "Pretendard", sans-serif;
+    color: #222;
+    font-size: 16px;
+    line-height: 1; /* x1 */
+    letter-spacing: 0;
+    word-break: keep-all; /* 단어를 지켜서 줄내림 */
+}
+
+/* -------------------------------- layout -------------------------------- */
+
+.wrap {
+    position: relative;
+    display: block;
+}
+
+/* top */
+
+.header {
+    position: relative;
+    display: block;
+}
+
+/* visual */
+
+.visual {
+    position: relative;
+    display: block;
+}
+
+/* service */
+
+.service {
+    position: relative;
+    display: block;
+}
+
+/* info */
+
+.info {
+    position: relative;
+    display: block;
+}
+
+/* category */
+
+.category {
+    position: relative;
+    display: block;
+}
+
+/* footer */
+
+.footer {
+    position: relative;
+    display: block;
+}
