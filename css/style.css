@@ -36,6 +36,17 @@ body {
     word-break: keep-all; /* 단어를 지켜서 줄내림 */
 }
 
+/* common */
+
+.inner {
+    position: relative;
+    display: block;
+    /* 반응형은 max-width 설정 */
+    max-width: 1420px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 /* -------------------------------- layout -------------------------------- */
 
 .wrap {
@@ -46,8 +57,71 @@ body {
 /* top */
 
 .header {
-    position: relative;
+    /* 메뉴가 상단에 고정해서 스크롤이 된다면 fixed */
+    position: fixed;
+    left: 0;
+    top: 0;
     display: block;
+    width: 100%;
+    height: 100px;
+    /* header는 항상 z-index 최대값을 준다. */
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0);
+    transition: height 0.5s, background 0.5s;
+    /* transition: all 0.5s; */
+}
+
+.header .inner {
+    height: 100%;
+    max-width: 100%;
+}
+
+/*
+    left, top, right, bottom 사용 시
+    반드시 position: absolute 쓰기.
+    즉, position: relative에 쓰지 않도록 한다.
+*/
+
+.logo {
+    position: absolute;
+    top: 35px;
+    left: 60px;
+    /*
+        a, span 등은 inline 태그
+        너비, 높이, margin, padding 설정 못함
+        그래서 최소 inline-block으로 설정해야한다.
+    */
+    display: inline-block;
+    width: 125px;
+    height: 30px;
+    background: url('../images/logo_white.png') no-repeat center;
+    background-size: cover;
+    transition: top 0.5s, background 0.5s;
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+
+.gnb { /* ul */
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+/* 스크롤 시 css 적용 */
+.header.active {
+    height: 80px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.header.active .logo {
+    top: 25px;
+    background: url('../images/logo.png');
+    background-size: cover;
 }
 
 /* visual */
@@ -55,6 +129,10 @@ body {
 .visual {
     position: relative;
     display: block;
+    width: 100%;
+    height: 100vh;
+    background: url('../images/main_visual_1.jpg') no-repeat center;
+    background-size: cover;
 }
 
 /* service */
