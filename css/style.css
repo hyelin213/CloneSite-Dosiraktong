@@ -36,7 +36,14 @@ body {
     word-break: keep-all; /* 단어를 지켜서 줄내림 */
 }
 
-/* common */
+html.active {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+/*
+    common : 2번 이상의 재활용 코드
+*/
 
 .inner {
     position: relative;
@@ -68,12 +75,14 @@ body {
     z-index: 999;
     background-color: rgba(255, 255, 255, 0);
     transition: height 0.5s, background 0.5s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     /* transition: all 0.5s; */
 }
 
 .header .inner {
     height: 100%;
     max-width: 100%;
+    z-index: 9;
 }
 
 /*
@@ -110,19 +119,181 @@ body {
     height: 100%;
 
     display: flex;
-    align-items: center;
+    align-items: center; /* 세로 중앙 정렬 */
 }
+
+/* .gnb > li : 또 다른 서브메뉴(li)가 있다면 명확히 선택한다 */
+
+.gnb > li > a {
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+    /* 왜 padding을 쓰는가? a의 영역을 확대하기 위함 */
+    padding: 40px 34px;
+}
+
+.gnb > li > a > span {
+    position: relative;
+    padding-bottom: 8px;
+}
+.gnb > li > a > span::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s;
+}
+.gnb > li > a:hover > span::after {
+    width: 100%;
+}
+/* 
+    javascript에서는 display:none 이면
+    선택이 안 될 때가 있다.
+    opacity: 0은 눈에 안 보이는 상태에서 작동하므로 배제한다.
+*/
+
+.mb-bt {
+    position: absolute;
+    top: 24px;
+    right: -20000px;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.mb-bt span {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: 0.5s;
+}
+.mb-bt span:nth-child(1) {
+    top: 0;
+    transition: transform 0.3s;
+}
+.mb-bt span:nth-child(2) {
+    top: calc(50% - 1px);
+    transition: opacity 0.2s;
+}
+.mb-bt span:nth-child(3) {
+    bottom: 0;
+    transition: transform 0.3s;
+}
+
+/* mobile menu */
+.mb-nav {
+    /* position 값이 relative 라면, 다른 영역에 영향을 준다. */
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    padding-top: 90px;
+    transition: left 0.3s ease-in-out;
+}
+ .mb-nav.active {
+    left: 0;
+}
+ .mb-bt span {
+    background-color: #fff;
+    transition: 0.3s;
+}
+.mb-nav-gnb > li {
+    border-bottom: 1px solid #e5e5e5;
+}
+.mb-nav-gnb > li > a {
+    display: block;
+    padding: 20px 70px 20px 40px;
+    font-size: 24px;
+}
+
 
 /* 스크롤 시 css 적용 */
 .header.active {
     height: 80px;
     background-color: rgba(255, 255, 255, 1);
 }
-.header.active .logo {
+.logo.active {
     top: 25px;
     background: url('../images/logo.png');
     background-size: cover;
 }
+.logo.active-blue {
+    background: url('../images/logo.png');
+    background-size: cover;
+}
+.gnb > li > a.active {
+    color: #222;
+}
+
+/* mobile button animation */
+.mb-bt span.active {
+    background-color: #222;
+}
+.mb-bt.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: calc(50% - 1px);
+}
+.mb-bt.active span:nth-child(2) {
+    opacity: 0;
+}
+.mb-bt.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: calc(50% - 1px);
+}
+
+/*
+    @media 숫자가 증가하는 형태는 모바일 > 타블렛 > 데스크탑 작업,
+    감소하는 형태는 데스크탑 > 타블렛 > 모바일 작업
+*/
+
+@media screen and (max-width: 1280px) {
+    .header {
+        height: 90px;
+    }
+
+    .logo {
+        top: 30px;
+        left: 20px;
+        width: 150px;
+        height: 30px;
+    }
+
+    .gnb > li > a {
+        padding: 25px 35px;
+    }
+} 
+@media screen and (max-width: 1080px) {
+    .header {
+        height: 70px !important;
+    }
+
+    .logo {
+        top: 20px !important;
+        left: 20px;
+        width: 120px;
+        height: 30px;
+    }
+
+    .gnb {
+        display: none;
+    }
+
+    .mb-bt {
+        right: 20px;
+    }
+}
+
 
 /* visual */
 
@@ -131,9 +302,15 @@ body {
     display: block;
     width: 100%;
     height: 100vh;
-    background: url('../images/main_visual_1.jpg') no-repeat center;
     background-size: cover;
 }
+
+/* .swvisual {}
+.visual-img {}
+.bg-1 {}
+.bg-2 {}
+.bg-3 {}
+.bg-4 {} */
 
 /* service */
 
