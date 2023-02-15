@@ -91,6 +91,125 @@ window.onload = () => {
         });
     }
 
-    new Swiper('.swvisual');
+    // data.json 외부연동 ***
+
+    // 1. XMLHttpRequest 활용
+    const xhttp = new XMLHttpRequest();
+    // data.json이 불러들여졌는지 검사 후 완료 시 실행
+    xhttp.onreadystatechange = e => {
+        const req = e.target;
+        if (req.readyState === XMLHttpRequest.DONE) {
+            console.log(req.response);
+            // response : 결과값
+            const dataArr = JSON.parse(req.response);
+            console.log(dataArr);
+        }
+    };
+    xhttp.open("GET", "data.json");
+    // xhttp.send();
+
+    // 통신
+    // Network -> Fetch/XHR -> Headers -> Request, status 확인
+    // status code : 200 단위 (정상 실행), 400 단위 (Request 오류), 500 단위 (서버 오류)
+
+    // 2. Fetch 활용 : 아래 구문을 준수하자.
+    fetch('data.json')
+        .then(res => res.json())
+        .then(data => {
+            // data를 활용한다.
+            // 데이터를 외부 변수에 저장한다. (스코프)
+            // 글로벌 변수에다가 로컬 변수를 담아 내보낸다.
+            visualData = data.visual;
+
+            // 데이터 로딩 후 데이터 개수 만큼 li 태그를 만든다.
+            // 만들어진 글자를 모아서 swUl 태그 안에 innerHTML 한다.
+            let html = '';
+            let count = 1;
+            visualData.forEach(item => {
+                html += `<li>${count++}</li>`;
+            });
+            swUl.innerHTML = html;
+            // js가 li를 참조할 수 있도록 적용
+            swList = document.querySelectorAll('.swvisual-list li');
+
+            // li 태그를 클릭해서 슬라이드 이동하기
+            swListShow();
+
+            showVT(visualData[0], 0);
+        })
+        .catch(err => {
+            // catch: 실패했을 때
+            console.log(err);
+        });
+
+    let visualData;
+
+    // 화면에 데이터를 출력하는 함수
+    const swTitle = document.querySelector('.swvisual-title');
+    const swTxt = document.querySelector('.swvisual-txt');
+    const swLink = document.querySelector('.swvisual-link');
+    const swUl = document.querySelector('.swvisual-list');
+
+    // li는 동적(데이터 로딩 후)으로 만들어야 한다.
+    let swList;
+
+    // title 내용 보여주기
+    function showVT(data, idx) {
+        swTitle.innerHTML = data.title;
+        swTxt.innerHTML = data.txt;
+        if (data.link === 'nothing') {
+            swLink.classList.add('active');
+        }
+        else {
+            swLink.classList.remove('active');
+        }
+        changeBar(idx);
+    }
+    // 포커스 라인 애니메이션 실행 함수
+    function changeBar(index) {
+        swList.forEach((item, idx) => {
+            if (index === idx) {
+                item.classList.add('active');
+            }
+            else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    // li 클릭 시 슬라이드 변경 함수
+    function swListShow() {
+        swList.forEach((item, idx) => {
+            // 클릭 시 슬라이드 변경
+            item.addEventListener('click', () => {
+                // swVisual 슬라이드를 변경 (API 참조)
+                swVisual.slideToLoop(idx, 500, false); // loop 속성을 사용할 경우
+                // swVisual.slideToLoop(번호, 속도, 효과);
+                // 아닌 경우 slideTo();
+            });
+        });
+    }
+
+    // visual slide
+    let swVisual = new Swiper('.swvisual', {
+        effect: 'fade',
+        loop: true,
+        speed: 1000,
+        autoplay: {
+            delay: 1000,
+            disableOnInteraction: false
+        },
+        navigation: {
+            prevEl: '.swvisual-prev',
+            nextEl: '.swvisual-next',
+        }
+    });
+
+    // 슬라이드가 변경될 때마다 하고 싶은 일 진행
+    swVisual.on('slideChange', () => {
+        // console.log('진짜 html 태그의 순서', swVisual.realIndex);
+        // console.log('모션이 되는 순서', swVisual.activeIndex);
+        showVT(visualData[swVisual.realIndex], swVisual.realIndex);
+    });
 
 };

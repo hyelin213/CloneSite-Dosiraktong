@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+    <!-- XEIcon -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -98,7 +101,9 @@
                 사용자지정클래스(swvisual) : js 및 css 추가
             -->
             <div class="swiper swvisual">
+                <!-- swiper-wrapper 클래스명 절대 변경 및 css 작업 금지 -->
                 <div class="swiper-wrapper">
+                    <!-- swiper-slide 클래스명 절대 변경 및 css 작업 금지 -->
                     <div class="swiper-slide">
                         <div class="visual-img bg-1"></div>
                     </div>
@@ -110,6 +115,34 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="visual-img bg-4"></div>
+                    </div>
+                </div>
+                <!-- 슬라이드 컨트롤러(별도로 배치하는 것을 추천함) -->
+                <div class="swvisual-control">
+                    <div class="inner">
+                        <!-- 좌측/우측 이동버튼 -->
+                        <button class="swvisual-prev">
+                            <i class="xi-angle-left"></i>
+                        </button>
+                        <button class="swvisual-next">
+                            <i class="xi-angle-right"></i>
+                        </button>
+                        <!-- 슬라이드 title -->
+                        <h2 class="swvisual-title"></h2>
+                        <!-- 슬라이드 txt -->
+                        <p class="swvisual-txt"></p>
+                        <div class="swvisual-link">
+                            <a href="#">
+                                자세히 보기
+                                <i class="xi-long-arrow-right"></i>
+                            </a>
+                        </div>
+                        <!-- 네비게이션 -->
+                        <div class="swvisual-navi">
+                            <ul class="swvisual-list">
+                                <!-- js 코드 html 삽입 -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
