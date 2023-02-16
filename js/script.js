@@ -1,5 +1,9 @@
 // 이미지 및 리소스 로드 후 코드실행
 window.onload = () => {
+
+    // aos 라이브러리
+    AOS.init();
+
     // 코드 실행 작성
     let $htmlTag = document.querySelector('html');
     // 모바일 메뉴 버튼 처리
@@ -210,6 +214,26 @@ window.onload = () => {
         // console.log('진짜 html 태그의 순서', swVisual.realIndex);
         // console.log('모션이 되는 순서', swVisual.activeIndex);
         showVT(visualData[swVisual.realIndex], swVisual.realIndex);
+    });
+
+    // 카테고리 슬라이드
+    new Swiper('.swcategory', {
+        loop: true,
+        slidesPerView: 1,
+        breakpoints: {
+            480: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            }
+        }
+    });
+
+    // 안내창 기능
+    let $categoryPop = document.querySelector('.category-pop');
+    $categoryPop.addEventListener('click', () => {
+        $categoryPop.classList.add('active');
     });
 
 };
