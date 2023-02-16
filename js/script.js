@@ -4,6 +4,26 @@ window.onload = () => {
     // aos 라이브러리
     AOS.init();
 
+    // waypoint 활용
+    let $goTop = document.querySelector(".gotop");
+    // 스크롤 위치에 따른 div 비교대상
+    let $visual = document.querySelector(".service"); 
+
+    new Waypoint({
+        element: $visual,
+        handler: function (dir) {
+            // dir의 값에 따라 처리
+            if (dir == 'down') {
+                $goTop.classList.add('active');
+            }
+            else {
+                $goTop.classList.remove('active');
+            }
+        },
+        // 해당 div의 화면 상에 얼마나 보이는가
+        offset: '50%'
+    });
+
     // 코드 실행 작성
     let $htmlTag = document.querySelector('html');
     // 모바일 메뉴 버튼 처리

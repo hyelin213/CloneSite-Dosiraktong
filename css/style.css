@@ -42,6 +42,25 @@ html.active {
     overflow-x: hidden;
 }
 
+/* 위로가기 */
+.gotop {
+    position: fixed;
+    right: 50px;
+    bottom: 100px;
+    width: 100px;
+    height: 100px;
+    z-index: 9999;
+    border: 0;
+    background: blue;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.gotop.active {
+    opacity: 1;
+    background: red;
+}
+
 /*
     common : 2번 이상의 재활용 코드
 */
