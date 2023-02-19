@@ -514,11 +514,16 @@ html.active {
 
 .service h2 {
     /* 글사 셋팅 */
+    margin-bottom: 30px;
     text-align: center;
+    font-size: 38px;
+    letter-spacing: -0.5px;
 }
-/* .service h2 span {
-    글자색 수정 
-} */
+
+.service h2 span {
+    font-family: "Godo", "notokr";
+    color: #3a68b2;
+}
 
 .service-contents {
     display: flex;
@@ -530,13 +535,6 @@ html.active {
     width: calc(50% - 10px);
     height: 100%;
 }
-.service-link-1 {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: url('../images/main_service_img1.jpg') no-repeat center;
-    background-size: cover;
-}
 
 .service-right {
     display: flex;
@@ -545,19 +543,55 @@ html.active {
     width: calc(50% - 10px);
     height: 100%;
 }
-.service-link-2 {
+
+.service-link {
     display: block;
     width: 100%;
-    height: calc(50% - 10px);
-    background: url('../images/main_service_img2.jpg') no-repeat center;
     background-size: cover;
 }
+
+.service-link-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+    padding: 60px;
+}
+
+.service-link-container h3 {
+    font-size: 26px;
+}
+.service-link-container p {
+    opacity: 0.7;
+    margin: 15px 0;
+}
+.service-link-container span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    padding: 0 20px;
+    width: 135px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.service-link-container span i {
+    font-size: 10px;
+}
+
+.service-link-1 {
+    height: 100%;
+    background: url('../images/main_service_img1.jpg') no-repeat center;
+}
+
+.service-link-2 {
+    height: calc(50% - 10px);
+    background: url('../images/main_service_img2.jpg') no-repeat center;
+}
 .service-link-3 {
-    display: block;
-    width: 100%;
     height: calc(50% - 10px);
     background: url('../images/main_service_img3.jpg') no-repeat center;
-    background-size: cover;
 }
 
 @media screen and (max-width: 1460px){
@@ -648,19 +682,76 @@ html.active {
 .info-contents {
     display: flex;
     justify-content: space-between;
-    max-height: 430px;
+    height: 430px;
     width: 100%;
-    height: 61.03vw;
 }
-.info .info-left {
+.info-left {
     width: calc(50% - 10px);
     height: 100%;
-    background: yellow;
 }
-.info .info-right {
+.info-right {
     width: calc(50% - 10px);
     height: 100%;
-    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-left h2 {
+    font-size: 38px;
+    letter-spacing: -1;
+    line-height: 1.35;
+}
+.info-left span {
+    font-family: "Godo", "notokr";
+    color: #3a68b2;
+}
+
+.info-right h4 {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-bottom: 45px;
+}
+.info-right h4 span {
+    font-size: 15px;
+    font-weight: bold;
+    color: #3a68b2;
+}
+.info-right .info-txt {
+    line-height: 1.5em;
+}
+.info-right .info-txt1 {
+    margin-bottom: 25px;
+}
+.info-right .info-txt2 {
+    margin-bottom: 100px;
+}
+.info-right .info-about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 140px;
+    height: 50px;
+    padding: 0 10px;
+    border-bottom: 2px solid #000;
+    transition: padding 0.2s;
+}
+.info-right .info-about span {
+    font-weight: bold;
+}
+.info-right .info-about i {
+    font-size: 18px;
+}
+.info-right .info-about:hover {
+    padding-right: 5px;
+}
+
+
+@media screen and (max-width: 1280px) {
+    .info-contents {
+        height: 383px;
+    }
 }
 
 @media screen and (max-width: 1024px) {
