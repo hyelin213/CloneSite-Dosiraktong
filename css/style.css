@@ -70,6 +70,16 @@ html.active {
     bottom: 200px;
 }
 
+@media screen and (max-width: 640px) {
+    .gotop {
+        right: 20px;
+        bottom: 20px;
+    }
+    .gotop.footerbottom {
+        bottom: 350px;
+    }
+}
+
 /*
     common : 2번 이상의 재활용 코드
 */
@@ -252,6 +262,7 @@ html.active {
 .header.active {
     height: 80px;
     background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 .logo.active {
     top: 25px;
@@ -302,6 +313,8 @@ html.active {
     .gnb > li > a {
         padding: 25px 35px;
     }
+
+
 } 
 @media screen and (max-width: 1080px) {
     .header {
@@ -430,7 +443,7 @@ html.active {
     margin-top: 30px;
     font-size: 16px;
     color: #fff;;
-    border: 1px solid #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     /* transition: 0.2s; */
 }
 .swvisual-link:hover {
@@ -441,7 +454,6 @@ html.active {
 }
 
 .swvisual-link a {
-    
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -488,12 +500,24 @@ html.active {
 }
 .swvisual-list li.active::after {
     width: 100%;
-    transition: width 2s;
+    transition: width 4s;
 }
 
 /* 비주얼 반응형 */
 @media screen and (max-width: 1280px){
     /* 비주얼 안쪽의 내용 부분 사이즈 조절 */
+    .swvisual-title {
+        font-size: 50px;
+        line-height: 1.3;
+    }
+    .swvisual-txt {
+        font-size: 20px;
+    }
+    .swvisual-control > .inner > button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 1024px){
@@ -502,10 +526,35 @@ html.active {
         height: 48.95vw;
     }
     /* 비주얼 안쪽의 내용 부분 사이즈 조절 */
+    .swvisual-title {
+        margin: 20px 0 12px;
+        font-size: 42px;
+        line-height: 1.3;
+    }
+    .swvisual-txt {
+        font-size: 17px;
+        color: #fff;
+    }
 }
 
 @media screen and (max-width: 640px){
     /* 비주얼 안쪽의 내용 부분 사이즈 조절 */
+    .swvisual-title {
+        font-size: 36px;
+        line-height: 1.3;
+    }
+    .swvisual-txt {
+        font-size: 17px;
+        color: #fff;
+    }
+    .swvisual-control > .inner > button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    .swvisual-list li {
+        width: 50px;
+    }
 }
 
 /* service */
@@ -513,16 +562,13 @@ html.active {
 .service {
     position: relative;
     display: block;
-    height: 100vh;
 }
 
 .service .inner {
-    height: 100%;
     padding: 180px 30px;
 }
 
 .service h2 {
-    /* 글사 셋팅 */
     margin-bottom: 30px;
     text-align: center;
     font-size: 38px;
@@ -614,17 +660,36 @@ html.active {
 }
 
 @media screen and (max-width: 1024px){
+
+    .service .inner {
+        height: 100%;
+        padding: 90px 30px;
+    }
+
     .service {
         height: auto;
+    }
+    .service h2 {
+        font-size: 30px;
     }
     .service-contents {
         flex-wrap: wrap;
         height: auto;
     }
 
+    .service-link-container {
+        padding: 30px;
+    }
+    .service-link-container h3 {
+        font-size: 22px;
+    }
+    .service-link-container p {
+        margin: 15px 0 25px;
+    }
+
     .service-left {
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .service-right {
@@ -651,7 +716,7 @@ html.active {
     
         /* 1024px : 310px = 30vw */
         height: 30vw;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .service-link-3 {
         max-width: 660px;
@@ -664,17 +729,22 @@ html.active {
 }
 
 @media screen and (max-width: 640px){
+    .service-link-container {
+        justify-content: center;
+        padding: 30px;
+    }
+
     .service-link-1 {
         width: 100%;
-        height: 275px;
+        height: 43vw;
     }
     .service-link-2 {
         width: 100%;
-        height: 275px;
+        height: 43vw;
     }
     .service-link-3 {
         width: 100%;
-        height: 275px;
+        height: 43vw;
     }
 }
 
@@ -686,7 +756,7 @@ html.active {
 }
 
 .info .inner {
-    padding: 180px 30px;
+    padding: 0 30px 120px;
 }
 .info-contents {
     display: flex;
@@ -701,9 +771,6 @@ html.active {
 .info-right {
     width: calc(50% - 10px);
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .info-left h2 {
@@ -728,13 +795,11 @@ html.active {
     color: #3a68b2;
 }
 .info-right .info-txt {
+    font-size: 15px;
     line-height: 1.5em;
 }
 .info-right .info-txt1 {
     margin-bottom: 25px;
-}
-.info-right .info-txt2 {
-    margin-bottom: 100px;
 }
 .info-right .info-about {
     display: flex;
@@ -742,6 +807,7 @@ html.active {
     align-items: center;
     width: 140px;
     height: 50px;
+    margin: 115px 0 0;
     padding: 0 10px;
     border-bottom: 2px solid #000;
     transition: padding 0.2s;
@@ -758,13 +824,22 @@ html.active {
 
 
 @media screen and (max-width: 1280px) {
-    .info-contents {
-        height: 383px;
+    
+    .info-right .info-about {
+        margin: 45px 0 0;
     }
 }
 
 @media screen and (max-width: 1024px) {
+    .info {
+        margin-bottom: 100px;
+    }
+    .info .inner {
+        padding: 0 30px;
+    }
+    
     .info-contents {
+        height: auto;
         justify-content: center;
         flex-wrap: wrap;
     }
@@ -772,13 +847,33 @@ html.active {
     .info-left {
         width: 100%;
         height: auto;
-        padding: 50px 0;
+        text-align: center;
+    }
+    .info-left h2 {
+        font-size: 34px;
+        margin-bottom: 30px;
+        letter-spacing: -1;
+        line-height: 1.35;
     }
 
     .info-right {
         width: 100%;
         height: auto;
-        padding: 50px 0;
+        text-align: center;
+    }
+    .info-right h4 {
+        font-size: 24px;
+    }
+    .info-right .info-about {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 140px;
+        height: 50px;
+        margin: 40px auto 0;
+        padding: 0 10px;
+        border-bottom: 2px solid #000;
+        transition: padding 0.2s;
     }
 }
 
@@ -806,7 +901,7 @@ html.active {
 }
 .category-link h3 {
     margin-bottom: 14px;
-    font-size: 28px;
+    font-size: 24px;
 }
 .category-link p {
     font-size: 17px;
@@ -830,6 +925,8 @@ html.active {
     position: absolute;
     right: 0;
     bottom: 0;
+    max-width: 299px;
+    width: 70%;
 }
 
 .category-link:hover {
@@ -857,7 +954,7 @@ html.active {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 99;
 }
 .category-pop.active {
@@ -867,6 +964,37 @@ html.active {
 @media screen and (max-width: 1024px) {
     .category-pop {
         display: flex;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .category {
+        height: 300px;
+    }
+    .category-link {
+        padding: 30px 20px;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .category-link h3 {
+        font-size: 20px;
+    }
+    .category-link p {
+        font-size: 15px;
+        line-height: 1.4;
+        opacity: 0.8;
+        margin-bottom: 50px;
+    }
+    .category-link img {
+        right: 0;
+        bottom: 0;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .category-link .width480 {
+        display: none;
     }
 }
 
@@ -890,19 +1018,24 @@ html.active {
 }
 .footer .footer-list {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     line-height: 1.7;
     margin-bottom: 20px;
 }
 .footer .footer-list li {
     position: relative;
+    padding: 0 20px;
 }
 .footer .footer-list li:not(:last-child)::after {
     content: '';
     display: inline-block;
+    position: absolute;
+    top: calc(50% - 6px);
+    right: 0;
+    width: 1px;
     height: 10px;
-    border-right: 1px solid #444;
-    padding-left: 20px;
-    margin-right: 20px;
+    background: #444;
 }
 .footer .footer-service {
     margin-bottom: 50px;
@@ -913,4 +1046,31 @@ html.active {
 .footer .footer-copyright {
     font-size: 14px;
     color: #444;
+}
+
+.footer .footer-service .width640 {
+    display: none;
+}
+
+@media screen and (max-width: 640px) {
+
+    .footer {
+        padding: 40px 0;
+    }
+
+    .footer .footer-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer .footer-list li:not(:last-child)::after {
+        display: none;
+    }
+    .footer .footer-service {
+        line-height: 1.35;
+        margin-bottom: 30px;
+    }
+    .footer .footer-service .width640 {
+        display: block;
+    }
 }

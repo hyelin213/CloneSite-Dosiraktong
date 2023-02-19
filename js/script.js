@@ -8,7 +8,7 @@ window.onload = () => {
     let $goTop = document.querySelector(".gotop");
     // 스크롤 위치에 따른 div 비교대상
     let $visual = document.querySelector(".service");
-    let $footer = document.querySelector('.footer');
+    let $footer = document.querySelector('.footer-copyright');
 
     new Waypoint({
         element: $visual,
@@ -236,9 +236,9 @@ window.onload = () => {
     let swVisual = new Swiper('.swvisual', {
         effect: 'fade',
         loop: true,
-        speed: 1000,
+        speed: 2000,
         autoplay: {
-            delay: 1000,
+            delay: 2000,
             disableOnInteraction: false
         },
         navigation: {
@@ -256,7 +256,6 @@ window.onload = () => {
 
     // 카테고리 슬라이드
     new Swiper('.swcategory', {
-        loop: true,
         slidesPerView: 1,
         breakpoints: {
             480: {
