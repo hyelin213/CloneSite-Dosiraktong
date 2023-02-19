@@ -36,7 +36,11 @@ window.onload = () => {
             }
         },
         offset: '100%'
-    })
+    });
+
+    $goTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // 코드 실행 작성
     let $htmlTag = document.querySelector('html');
